@@ -1,0 +1,9 @@
+{
+  "name": "propuesta-vectorizacion",
+  "version": "1.0.0",
+  "description": "Propuesta interactiva para servicio de vectorización de logos",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  }
+}
