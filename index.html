@@ -9,9 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Toggle Modo Oscuro -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <span class="theme-icon-light">&#9728;</span>
+        <span class="theme-icon-dark">&#9790;</span>
+    </button>
+
     <div class="container">
         <!-- Header -->
-        <header class="header">
+        <header class="header animate-fade-in">
             <h1>PROPUESTA DE VECTORIZACIÓN</h1>
             <p class="subtitulo">Transformación profesional de imágenes a formato vectorial</p>
         </header>
@@ -248,6 +254,36 @@
                     <tr><td>3 logos</td><td><strong>$39.000</strong></td><td>$19.500 x2</td><td>$13.000 x3</td></tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- Datos de Transferencia -->
+        <div class="datos-pago animate-slide-up">
+            <div class="datos-pago-icon">&#127974;</div>
+            <div class="datos-pago-info">
+                <h4>Datos para Transferencia</h4>
+                <div class="datos-pago-grid">
+                    <div class="dato">
+                        <span class="dato-label">Banco</span>
+                        <span class="dato-value">Banco Estado</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-label">Tipo de Cuenta</span>
+                        <span class="dato-value">Cuenta RUT</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-label">RUT</span>
+                        <span class="dato-value">14.030.492-1</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-label">Nombre</span>
+                        <span class="dato-value">Sergio Seguel Wollerman</span>
+                    </div>
+                    <div class="dato">
+                        <span class="dato-label">Email</span>
+                        <span class="dato-value">sergioseguel81@gmail.com</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Entregables -->
@@ -612,6 +648,18 @@
                         <textarea name="comentarios" rows="3" placeholder="Cualquier información adicional que quieras agregar..."></textarea>
                     </div>
                 </div>
+            </div>
+
+            <!-- Aceptación -->
+            <div class="aceptacion-box animate-slide-up">
+                <label class="aceptacion-label">
+                    <input type="checkbox" id="aceptar-propuesta" name="aceptar">
+                    <span class="checkmark"></span>
+                    <span class="aceptacion-texto">
+                        <strong>Acepto los términos de esta propuesta</strong><br>
+                        <small>Al marcar esta casilla, confirmo que he leído y acepto las condiciones de servicio, plazos de entrega, sistema de revisiones y forma de pago descritos en esta propuesta.</small>
+                    </span>
+                </label>
             </div>
 
             <!-- Resumen y botones -->

@@ -143,3 +143,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Hacer la función global para el onclick
 window.copiarResumen = copiarResumen;
+
+// ====================
+// MODO OSCURO
+// ====================
+
+// Toggle tema
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+
+    // Guardar preferencia
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+}
+
+// Cargar preferencia guardada
+function loadThemePreference() {
+    const savedTheme = localStorage.getItem('darkMode');
+
+    // Si hay preferencia guardada, usarla
+    if (savedTheme === 'true') {
+        document.body.classList.add('dark-mode');
+    } else if (savedTheme === null) {
+        // Si no hay preferencia, detectar preferencia del sistema
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+        }
+    }
+}
+
+// Inicializar tema
+loadThemePreference();
+
+// Hacer la función global
+window.toggleTheme = toggleTheme;
+
+// ====================
+// ANIMACIONES AL SCROLL
+// ====================
+
+// Observador para animaciones al entrar en viewport
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observar elementos para animar
+document.addEventListener('DOMContentLoaded', () => {
+    // Elementos a animar cuando entran en viewport
+    const animateElements = document.querySelectorAll('.logo-card, .form-logo-card, .entregable, .pago-card');
+    animateElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `all 0.5s ease ${index * 0.05}s`;
+        observer.observe(el);
+    });
+});
+
+// Clase para elementos visibles
+const style = document.createElement('style');
+style.textContent = `
+    .animate-visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+document.head.appendChild(style);

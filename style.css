@@ -748,6 +748,173 @@ textarea::placeholder {
     background: rgba(255,255,255,0.3);
 }
 
+/* Datos de Pago */
+.datos-pago {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    color: white;
+}
+
+.datos-pago-icon {
+    font-size: 40px;
+}
+
+.datos-pago-info {
+    flex: 1;
+}
+
+.datos-pago-info h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.datos-pago-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.dato {
+    background: rgba(255,255,255,0.15);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.dato-label {
+    display: block;
+    font-size: 11px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.dato-value {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Aceptación */
+.aceptacion-box {
+    background: #fef3c7;
+    border: 2px solid #fbbf24;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.aceptacion-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.aceptacion-label input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-top: 3px;
+    cursor: pointer;
+    accent-color: #059669;
+}
+
+.aceptacion-texto {
+    flex: 1;
+    color: #78350f;
+}
+
+.aceptacion-texto strong {
+    font-size: 16px;
+    color: #92400e;
+}
+
+.aceptacion-texto small {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #1e40af;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.theme-icon-dark {
+    display: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+}
+
+/* Animaciones al hacer scroll */
+.logo-card, .form-logo-card, .entregable, .pago-card {
+    transition: all 0.3s ease;
+}
+
+.logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.entregable:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
 /* Footer */
 .footer {
     margin-top: 40px;
@@ -760,6 +927,267 @@ textarea::placeholder {
 
 .footer p {
     margin-bottom: 5px;
+}
+
+/* ==================== */
+/* MODO OSCURO */
+/* ==================== */
+body.dark-mode {
+    background: #0f172a;
+}
+
+body.dark-mode .container {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+body.dark-mode .header {
+    border-color: #3b82f6;
+}
+
+body.dark-mode .header h1 {
+    color: #60a5fa;
+}
+
+body.dark-mode .header .subtitulo {
+    color: #94a3b8;
+}
+
+body.dark-mode .contacto-box {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode .contacto-nombre {
+    color: #f1f5f9;
+}
+
+body.dark-mode .contacto-divider {
+    background: #475569;
+}
+
+body.dark-mode .info-box {
+    background: #334155;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .info-item .numero {
+    color: #60a5fa;
+}
+
+body.dark-mode .info-item .etiqueta {
+    color: #94a3b8;
+}
+
+body.dark-mode .explicacion {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+}
+
+body.dark-mode .explicacion h2,
+body.dark-mode .explicacion p {
+    color: #e2e8f0;
+}
+
+body.dark-mode .beneficio {
+    background: #334155;
+    color: #e2e8f0;
+}
+
+body.dark-mode .section-title {
+    color: #60a5fa;
+    border-color: #475569;
+}
+
+body.dark-mode .section-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .logo-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode .logo-name {
+    color: #f1f5f9;
+}
+
+body.dark-mode .proceso {
+    background: #334155;
+}
+
+body.dark-mode .proceso h3 {
+    color: #60a5fa;
+}
+
+body.dark-mode .pasos::before {
+    background: #475569;
+}
+
+body.dark-mode .paso-titulo {
+    color: #f1f5f9;
+}
+
+body.dark-mode .paso-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .revisiones-box {
+    background: #422006;
+    border-color: #92400e;
+}
+
+body.dark-mode .revisiones-box h4,
+body.dark-mode .revisiones-box ul,
+body.dark-mode .revisiones-box p {
+    color: #fcd34d;
+}
+
+body.dark-mode .pago-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode .pago-card.destacado {
+    background: #1e3a5f;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .pago-tipo {
+    color: #f1f5f9;
+}
+
+body.dark-mode .pago-monto {
+    color: #60a5fa;
+}
+
+body.dark-mode .pago-cuando {
+    color: #94a3b8;
+}
+
+body.dark-mode .tabla-precios {
+    background: #334155;
+}
+
+body.dark-mode .tabla-precios h4 {
+    color: #60a5fa;
+}
+
+body.dark-mode .tabla-precios > p {
+    color: #94a3b8;
+}
+
+body.dark-mode .tabla-precios th {
+    background: #475569;
+    color: #f1f5f9;
+}
+
+body.dark-mode .tabla-precios td {
+    color: #e2e8f0;
+    border-color: #475569;
+}
+
+body.dark-mode .tabla-precios tr.highlight {
+    background: #1e3a5f;
+}
+
+body.dark-mode .entregable {
+    background: #334155;
+}
+
+body.dark-mode .entregable-titulo {
+    color: #f1f5f9;
+}
+
+body.dark-mode .entregable-desc {
+    color: #94a3b8;
+}
+
+body.dark-mode .garantia {
+    background: #14532d;
+    border-color: #16a34a;
+}
+
+body.dark-mode .garantia-texto h4 {
+    color: #4ade80;
+}
+
+body.dark-mode .garantia-texto p {
+    color: #bbf7d0;
+}
+
+body.dark-mode .form-logo-card {
+    border-color: #475569;
+}
+
+body.dark-mode .form-logo-header {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode .form-logo-header img {
+    background: #1e293b;
+    border-color: #475569;
+}
+
+body.dark-mode .form-logo-name {
+    color: #f1f5f9;
+}
+
+body.dark-mode .form-logo-body {
+    background: #1e293b;
+}
+
+body.dark-mode .form-group label {
+    color: #94a3b8;
+}
+
+body.dark-mode .radio-group label {
+    color: #e2e8f0;
+}
+
+body.dark-mode textarea {
+    background: #334155;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark-mode textarea::placeholder {
+    color: #64748b;
+}
+
+body.dark-mode .form-general {
+    background: #334155;
+}
+
+body.dark-mode .aceptacion-box {
+    background: #422006;
+    border-color: #92400e;
+}
+
+body.dark-mode .aceptacion-texto {
+    color: #fcd34d;
+}
+
+body.dark-mode .aceptacion-texto strong {
+    color: #fbbf24;
+}
+
+body.dark-mode .footer {
+    color: #64748b;
+    border-color: #475569;
+}
+
+body.dark-mode .theme-toggle {
+    background: #fbbf24;
+    color: #1e293b;
+}
+
+body.dark-mode .theme-icon-light {
+    display: none;
+}
+
+body.dark-mode .theme-icon-dark {
+    display: inline;
 }
 
 /* Responsive */
