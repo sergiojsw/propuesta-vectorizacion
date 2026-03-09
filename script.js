@@ -27,7 +27,10 @@ const CONFIG = {
         logo7: { nombre: 'PZPN Águila', complejidad: 'simple' },
         logo8: { nombre: 'ZINTROP Fútbol v1', complejidad: 'medio' },
         logo9: { nombre: 'ZINTROP Fútbol v2', complejidad: 'medio' }
-    }
+    },
+
+    // Dependencias: logos que requieren logo 3 si eligen usar su diseño de abeja
+    DEPENDENCIAS_LOGO3: ['logo6', 'logo8']
 };
 
 // Elementos del DOM
@@ -554,6 +557,81 @@ function enviarCorreoDirecto() {
 }
 
 // ====================
+// DEPENDENCIAS LOGO 3
+// ====================
+function verificarDependenciasLogo3() {
+    const logo3Checkbox = document.querySelector('input[name="logo3_incluir"]');
+    const logo3Card = document.getElementById('logo3-card');
+    const logo3Dependencia = document.getElementById('logo3-dependencia');
+
+    if (!logo3Checkbox) return;
+
+    // Verificar si algún logo requiere logo 3
+    let requiereLogo3 = false;
+    const logosQueRequieren = [];
+
+    CONFIG.DEPENDENCIAS_LOGO3.forEach(logoKey => {
+        const radioLogo3 = document.querySelector(`input[name="${logoKey}_abeja"][value="logo3"]`);
+        const logoIncluido = document.querySelector(`input[name="${logoKey}_incluir"]`);
+
+        if (radioLogo3 && radioLogo3.checked && logoIncluido && logoIncluido.checked) {
+            requiereLogo3 = true;
+            const logoNum = logoKey.replace('logo', '');
+            logosQueRequieren.push(logoNum);
+        }
+    });
+
+    // Actualizar visual y comportamiento
+    if (requiereLogo3) {
+        // Auto-seleccionar logo 3 si no está seleccionado
+        if (!logo3Checkbox.checked) {
+            logo3Checkbox.checked = true;
+            mostrarToast(`Logo 3 (Abeja) seleccionado automáticamente - requerido por Logo ${logosQueRequieren.join(', ')}`, 'info', 4000);
+            actualizarTotal();
+        }
+
+        // Mostrar aviso de dependencia
+        if (logo3Dependencia) {
+            logo3Dependencia.style.display = 'flex';
+            logo3Dependencia.querySelector('.dependencia-texto').textContent =
+                `Requerido por Logo ${logosQueRequieren.join(' y ')}`;
+        }
+
+        // Marcar card como dependencia activa
+        if (logo3Card) {
+            logo3Card.classList.add('tiene-dependencias');
+        }
+    } else {
+        // Ocultar aviso si no hay dependencias
+        if (logo3Dependencia) {
+            logo3Dependencia.style.display = 'none';
+        }
+        if (logo3Card) {
+            logo3Card.classList.remove('tiene-dependencias');
+        }
+    }
+}
+
+// Listener para radios de abeja que requieren logo 3
+function inicializarDependenciasLogo3() {
+    CONFIG.DEPENDENCIAS_LOGO3.forEach(logoKey => {
+        const radiosAbeja = document.querySelectorAll(`input[name="${logoKey}_abeja"]`);
+        radiosAbeja.forEach(radio => {
+            radio.addEventListener('change', verificarDependenciasLogo3);
+        });
+
+        // También cuando se incluye/excluye el logo
+        const checkboxIncluir = document.querySelector(`input[name="${logoKey}_incluir"]`);
+        if (checkboxIncluir) {
+            checkboxIncluir.addEventListener('change', verificarDependenciasLogo3);
+        }
+    });
+
+    // Verificar al cargar
+    verificarDependenciasLogo3();
+}
+
+// ====================
 // EVENT LISTENERS
 // ====================
 checkboxes.forEach(checkbox => {
@@ -577,6 +655,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     actualizarTotal();
+
+    // Inicializar sistema de dependencias del logo 3
+    inicializarDependenciasLogo3();
 });
 
 // ====================

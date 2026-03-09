@@ -435,6 +435,41 @@ body.dark-mode .ejemplo-texto {
 .badge-medio { background: #fef3c7; color: #92400e; }
 .badge-complejo { background: #fee2e2; color: #991b1b; }
 .badge-rediseno { background: #e0e7ff; color: #3730a3; }
+.badge-dependencia { background: #fef3c7; color: #92400e; font-size: 10px; }
+
+/* Aviso de dependencia en logo 3 */
+.dependencia-aviso {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-bottom: 1px solid #fbbf24;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    font-size: 13px;
+    color: #92400e;
+    font-weight: 500;
+}
+
+.dependencia-icon {
+    font-size: 16px;
+}
+
+.form-logo-card.tiene-dependencias {
+    border: 2px solid #fbbf24;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+/* Nota de dependencia en opciones */
+.nota-dependencia {
+    font-size: 11px;
+    color: #92400e;
+    background: #fef3c7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+    white-space: nowrap;
+}
 
 .badge-precio {
     font-size: 11px;

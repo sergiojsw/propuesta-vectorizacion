@@ -617,14 +617,19 @@
                 </div>
             </div>
 
-            <!-- Logo 3 - ESPECIAL: Requiere rediseño -->
-            <div class="form-logo-card">
+            <!-- Logo 3 - ESPECIAL: Requiere rediseño - BASE PARA LOGOS 6, 8, 9 -->
+            <div class="form-logo-card" id="logo3-card">
+                <div class="dependencia-aviso" id="logo3-dependencia" style="display:none;">
+                    <span class="dependencia-icon">🔗</span>
+                    <span class="dependencia-texto">Requerido por logos que usan esta abeja</span>
+                </div>
                 <div class="form-logo-header">
                     <img src="logos/03-abeja.jpg" alt="Abeja Lineal">
                     <div class="form-logo-info">
                         <span class="form-logo-num">3</span>
                         <span class="form-logo-name">Abeja Lineal</span>
                         <span class="badge badge-rediseno">Rediseño</span>
+                        <span class="badge badge-dependencia" title="Los logos 6, 8 y 9 pueden usar este diseño">🐝 Base</span>
                     </div>
                     <label class="checkbox-incluir">
                         <input type="checkbox" name="logo3_incluir" checked>
@@ -869,7 +874,7 @@
                             <label>La abeja del escudo:</label>
                             <div class="radio-group">
                                 <label><input type="radio" name="logo6_abeja" value="actual" checked> Mantener actual</label>
-                                <label><input type="radio" name="logo6_abeja" value="logo3"> Usar diseño Logo 3</label>
+                                <label><input type="radio" name="logo6_abeja" value="logo3" class="requiere-logo3"> Usar diseño Logo 3 <span class="nota-dependencia">(requiere Logo 3)</span></label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1010,7 +1015,7 @@
                             <label>La abeja:</label>
                             <div class="radio-group">
                                 <label><input type="radio" name="logo8_abeja" value="actual" checked> Estilo actual</label>
-                                <label><input type="radio" name="logo8_abeja" value="logo3"> Usar diseño Logo 3</label>
+                                <label><input type="radio" name="logo8_abeja" value="logo3" class="requiere-logo3"> Usar diseño Logo 3 <span class="nota-dependencia">(requiere Logo 3)</span></label>
                                 <label><input type="radio" name="logo8_abeja" value="blanca"> Abeja blanca</label>
                             </div>
                         </div>
