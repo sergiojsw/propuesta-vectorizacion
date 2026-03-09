@@ -47,32 +47,72 @@ function mostrarToast(mensaje, tipo = 'info', duracion = 3000) {
 // PERSISTENCIA LOCALSTORAGE
 // ====================
 let saveTimeout;
+let ultimoGuardado = null;
 
 function guardarFormulario() {
     clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => {
-        const formData = new FormData(formulario);
-        const data = {};
-
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-
-        // Guardar checkboxes no marcados también
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            data[cb.name] = cb.checked;
-        });
-
-        data._timestamp = Date.now();
-        localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
-
-        // Mostrar indicador de guardado
-        if (guardadoIndicator) {
-            guardadoIndicator.classList.add('visible');
-            setTimeout(() => guardadoIndicator.classList.remove('visible'), 2000);
-        }
+        guardarDatos();
     }, CONFIG.AUTO_SAVE_DELAY);
 }
+
+function guardarDatos() {
+    const formData = new FormData(formulario);
+    const data = {};
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Guardar checkboxes no marcados también
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        data[cb.name] = cb.checked;
+    });
+
+    data._timestamp = Date.now();
+    ultimoGuardado = data._timestamp;
+    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(data));
+
+    // Actualizar indicador de estado
+    actualizarEstadoGuardado();
+}
+
+function guardarManual() {
+    clearTimeout(saveTimeout);
+    guardarDatos();
+    mostrarToast('Borrador guardado correctamente', 'success');
+}
+
+function actualizarEstadoGuardado() {
+    const statusIcon = document.getElementById('status-icon');
+    const statusText = document.getElementById('status-text');
+
+    if (!statusIcon || !statusText) return;
+
+    if (ultimoGuardado) {
+        statusIcon.textContent = '✓';
+        statusText.textContent = 'Guardado ' + tiempoRelativo(ultimoGuardado);
+        statusText.classList.add('saved');
+    }
+}
+
+function tiempoRelativo(timestamp) {
+    const ahora = Date.now();
+    const diff = ahora - timestamp;
+
+    if (diff < 5000) return 'ahora';
+    if (diff < 60000) return 'hace ' + Math.floor(diff / 1000) + ' seg';
+    if (diff < 3600000) return 'hace ' + Math.floor(diff / 60000) + ' min';
+    if (diff < 86400000) return 'hace ' + Math.floor(diff / 3600000) + ' horas';
+    return 'hace ' + Math.floor(diff / 86400000) + ' días';
+}
+
+// Actualizar tiempo relativo cada 30 segundos
+setInterval(() => {
+    if (ultimoGuardado) {
+        actualizarEstadoGuardado();
+    }
+}, 30000);
 
 function cargarFormulario() {
     const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
@@ -104,6 +144,12 @@ function cargarFormulario() {
             }
         });
 
+        // Establecer tiempo de último guardado
+        if (timestamp) {
+            ultimoGuardado = timestamp;
+            actualizarEstadoGuardado();
+        }
+
         return true;
     } catch (e) {
         console.error('Error cargando formulario:', e);
@@ -114,8 +160,38 @@ function cargarFormulario() {
 function limpiarFormulario() {
     localStorage.removeItem(CONFIG.STORAGE_KEY);
     formulario.reset();
+    ultimoGuardado = null;
+
+    // Resetear indicador de estado
+    const statusIcon = document.getElementById('status-icon');
+    const statusText = document.getElementById('status-text');
+    if (statusIcon) statusIcon.textContent = '💾';
+    if (statusText) {
+        statusText.textContent = 'Sin cambios guardados';
+        statusText.classList.remove('saved');
+    }
+
     actualizarTotal();
-    mostrarToast('Formulario reiniciado', 'info');
+    mostrarToast('Formulario limpiado', 'info');
+}
+
+function confirmarLimpiar() {
+    const modal = document.getElementById('modal-limpiar');
+    if (modal) {
+        modal.classList.add('visible');
+    }
+}
+
+function cerrarModal() {
+    const modal = document.getElementById('modal-limpiar');
+    if (modal) {
+        modal.classList.remove('visible');
+    }
+}
+
+function ejecutarLimpiar() {
+    cerrarModal();
+    limpiarFormulario();
 }
 
 // ====================
@@ -345,6 +421,10 @@ window.copiarResumen = copiarResumen;
 window.enviarWhatsApp = enviarWhatsApp;
 window.limpiarFormulario = limpiarFormulario;
 window.toggleAdvanced = toggleAdvanced;
+window.guardarManual = guardarManual;
+window.confirmarLimpiar = confirmarLimpiar;
+window.cerrarModal = cerrarModal;
+window.ejecutarLimpiar = ejecutarLimpiar;
 
 // ====================
 // MODO OSCURO

@@ -27,6 +27,19 @@
     <!-- Toast Container -->
     <div id="toast-container" aria-live="polite"></div>
 
+    <!-- Modal de Confirmación -->
+    <div class="modal-overlay" id="modal-limpiar">
+        <div class="modal-content">
+            <div class="modal-icon">&#9888;</div>
+            <div class="modal-title">¿Limpiar formulario?</div>
+            <div class="modal-text">Se eliminarán todas las respuestas guardadas. Esta acción no se puede deshacer.</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel" onclick="cerrarModal()">Cancelar</button>
+                <button class="modal-btn modal-btn-danger" onclick="ejecutarLimpiar()">Sí, limpiar</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <header class="header animate-fade-in">
@@ -335,6 +348,22 @@
         <!-- FORMULARIO -->
         <h2 class="section-title form-title">&#128221; Formulario de Necesidades</h2>
         <p class="section-desc">Completa este formulario indicando tus preferencias para cada logo. Las opciones avanzadas te permiten especificar exactamente lo que necesitas:</p>
+
+        <!-- Barra de estado del formulario -->
+        <div class="form-status-bar">
+            <div class="status-left">
+                <span class="status-icon" id="status-icon">&#128190;</span>
+                <span class="status-text" id="status-text">Sin cambios guardados</span>
+            </div>
+            <div class="status-right">
+                <button type="button" class="btn-status btn-save" onclick="guardarManual()" title="Guardar borrador">
+                    &#128190; Guardar borrador
+                </button>
+                <button type="button" class="btn-status btn-clear" onclick="confirmarLimpiar()" title="Limpiar formulario">
+                    &#128465; Limpiar
+                </button>
+            </div>
+        </div>
 
         <form id="formulario" class="formulario">
             <!-- Logo 1 -->
