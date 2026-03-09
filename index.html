@@ -27,7 +27,7 @@
     <!-- Toast Container -->
     <div id="toast-container" aria-live="polite"></div>
 
-    <!-- Modal de Confirmación -->
+    <!-- Modal de Confirmación Limpiar -->
     <div class="modal-overlay" id="modal-limpiar">
         <div class="modal-content">
             <div class="modal-icon">&#9888;</div>
@@ -36,6 +36,30 @@
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-cancel" onclick="cerrarModal()">Cancelar</button>
                 <button class="modal-btn modal-btn-danger" onclick="ejecutarLimpiar()">Sí, limpiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resumen/Confirmación -->
+    <div class="modal-overlay modal-resumen" id="modal-resumen">
+        <div class="modal-content modal-content-large">
+            <div class="resumen-header">
+                <h2>&#128203; Resumen de tu Pedido</h2>
+                <button class="resumen-close" onclick="cerrarResumen()">&times;</button>
+            </div>
+            <div class="resumen-body" id="resumen-body">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div class="resumen-total" id="resumen-total">
+                <!-- Total dinámico -->
+            </div>
+            <div class="resumen-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="cerrarResumen()">
+                    &#8592; Volver y modificar
+                </button>
+                <button class="modal-btn modal-btn-success" onclick="confirmarYEnviar()">
+                    &#10003; Confirmar y enviar por WhatsApp
+                </button>
             </div>
         </div>
     </div>
@@ -123,7 +147,7 @@
                     <span class="logo-num">3</span>
                     <span class="logo-name">Abeja Lineal</span>
                 </div>
-                <span class="badge badge-medio">Medio</span>
+                <span class="badge badge-rediseno">Rediseño</span>
             </div>
             <div class="logo-card">
                 <img src="logos/04-ztp.png" alt="ZTP">
@@ -560,7 +584,7 @@
                     <div class="form-logo-info">
                         <span class="form-logo-num">3</span>
                         <span class="form-logo-name">Abeja Lineal</span>
-                        <span class="badge badge-medio">Requiere rediseño</span>
+                        <span class="badge badge-rediseno">Rediseño</span>
                     </div>
                     <label class="checkbox-incluir">
                         <input type="checkbox" name="logo3_incluir" checked>

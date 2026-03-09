@@ -353,33 +353,14 @@ function copiarResumen() {
 // ENVIAR WHATSAPP
 // ====================
 function enviarWhatsApp() {
-    if (!validarFormulario()) return;
-
-    const resumen = generarResumen();
-    const mensaje = encodeURIComponent(resumen);
-    const url = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${mensaje}`;
-
-    window.open(url, '_blank');
-    mostrarToast('Abriendo WhatsApp...', 'info');
+    // Mostrar resumen primero para confirmación
+    mostrarResumen();
 }
 
 // ====================
 // GENERAR RESUMEN
 // ====================
 function generarResumen() {
-    const logos = [];
-    document.querySelectorAll('.form-logo-card').forEach((card, idx) => {
-        const nameEl = card.querySelector('.form-logo-name');
-        const numEl = card.querySelector('.form-logo-num');
-        if (nameEl && numEl) {
-            logos.push({
-                num: parseInt(numEl.textContent) || idx + 1,
-                nombre: nameEl.textContent.trim(),
-                campo: `logo${idx + 1}`
-            });
-        }
-    });
-
     let resumen = '=== PROPUESTA DE VECTORIZACIÓN ===\n';
     resumen += `Fecha: ${new Date().toLocaleDateString('es-CL')}\n\n`;
 
@@ -387,18 +368,24 @@ function generarResumen() {
     resumen += 'LOGOS SELECCIONADOS:\n';
     resumen += '─────────────────────\n';
 
+    let total = 0;
     let seleccionados = 0;
 
-    logos.forEach(logo => {
-        const incluir = document.querySelector(`input[name="${logo.campo}_incluir"]`);
-        if (incluir && incluir.checked) {
+    for (let i = 1; i <= 9; i++) {
+        const checkbox = document.querySelector(`input[name="logo${i}_incluir"]`);
+        if (checkbox && checkbox.checked) {
             seleccionados++;
-            resumen += `\n${logo.num}. ${logo.nombre}\n`;
+            const logoKey = `logo${i}`;
+            const logoInfo = CONFIG.LOGOS[logoKey];
+            const precio = CONFIG.PRECIOS[logoInfo.complejidad];
+            total += precio;
+
+            resumen += `\n${i}. ${logoInfo.nombre} (${formatearPrecio(precio)})\n`;
 
             // Obtener opciones seleccionadas
-            const radios = document.querySelectorAll(`input[name^="${logo.campo}_"]:checked`);
+            const radios = document.querySelectorAll(`input[name^="${logoKey}_"]:checked`);
             radios.forEach(radio => {
-                if (radio.name !== `${logo.campo}_incluir`) {
+                if (radio.name !== `${logoKey}_incluir`) {
                     const label = radio.closest('label');
                     if (label) {
                         resumen += `   • ${label.textContent.trim()}\n`;
@@ -407,12 +394,12 @@ function generarResumen() {
             });
 
             // Notas
-            const notas = document.querySelector(`textarea[name="${logo.campo}_notas"]`);
+            const notas = document.querySelector(`textarea[name="${logoKey}_notas"]`);
             if (notas && notas.value.trim()) {
                 resumen += `   Notas: ${notas.value.trim()}\n`;
             }
         }
-    });
+    }
 
     // Información general
     resumen += '\n\nINFORMACIÓN GENERAL:\n';
@@ -437,7 +424,6 @@ function generarResumen() {
     }
 
     // Total
-    const total = seleccionados * CONFIG.PRECIO_POR_LOGO;
     resumen += '\n─────────────────────\n';
     resumen += `TOTAL: ${seleccionados} logos = ${formatearPrecio(total)}\n`;
     resumen += '─────────────────────\n';
@@ -445,6 +431,109 @@ function generarResumen() {
     resumen += '\nPropuesta aceptada: Sí\n';
 
     return resumen;
+}
+
+// ====================
+// MODAL DE RESUMEN
+// ====================
+function mostrarResumen() {
+    if (!validarFormulario()) return;
+
+    const modalResumen = document.getElementById('modal-resumen');
+    const resumenBody = document.getElementById('resumen-body');
+    const resumenTotal = document.getElementById('resumen-total');
+
+    // Generar contenido del resumen
+    let html = '';
+    let total = 0;
+    let seleccionados = 0;
+    let conteo = { simple: 0, medio: 0, complejo: 0, rediseno: 0 };
+
+    for (let i = 1; i <= 9; i++) {
+        const checkbox = document.querySelector(`input[name="logo${i}_incluir"]`);
+        if (checkbox && checkbox.checked) {
+            seleccionados++;
+            const logoKey = `logo${i}`;
+            const logoInfo = CONFIG.LOGOS[logoKey];
+            const precio = CONFIG.PRECIOS[logoInfo.complejidad];
+            total += precio;
+            conteo[logoInfo.complejidad]++;
+
+            // Obtener imagen
+            const imgSrc = document.querySelector(`.form-logo-card:nth-of-type(${i}) img`)?.src || `logos/0${i}-placeholder.jpg`;
+
+            // Obtener detalles relevantes
+            let detalles = [];
+
+            // Color/Estilo
+            const colorRadio = document.querySelector(`input[name="${logoKey}_color"]:checked, input[name="${logoKey}_efecto"]:checked, input[name="${logoKey}_estilo"]:checked`);
+            if (colorRadio) {
+                const colorLabel = colorRadio.closest('label');
+                if (colorLabel) detalles.push(colorLabel.textContent.trim());
+            }
+
+            // Notas
+            const notas = document.querySelector(`textarea[name="${logoKey}_notas"]`);
+            if (notas && notas.value.trim()) {
+                detalles.push(`"${notas.value.trim().substring(0, 50)}${notas.value.length > 50 ? '...' : ''}"`);
+            }
+
+            const badgeClass = `badge-${logoInfo.complejidad}`;
+
+            html += `
+                <div class="resumen-logo-item">
+                    <img src="${imgSrc}" alt="${logoInfo.nombre}" class="resumen-logo-img">
+                    <div class="resumen-logo-info">
+                        <div class="resumen-logo-name">
+                            ${i}. ${logoInfo.nombre}
+                            <span class="badge ${badgeClass}" style="margin-left:8px">${logoInfo.complejidad}</span>
+                        </div>
+                        <div class="resumen-logo-detalles">${detalles.join(' • ') || 'Sin notas adicionales'}</div>
+                    </div>
+                    <div class="resumen-logo-precio">${formatearPrecio(precio)}</div>
+                </div>
+            `;
+        }
+    }
+
+    // Construir desglose
+    let desglose = [];
+    if (conteo.simple > 0) desglose.push(`${conteo.simple} simple${conteo.simple > 1 ? 's' : ''}`);
+    if (conteo.medio > 0) desglose.push(`${conteo.medio} medio${conteo.medio > 1 ? 's' : ''}`);
+    if (conteo.complejo > 0) desglose.push(`${conteo.complejo} complejo${conteo.complejo > 1 ? 's' : ''}`);
+    if (conteo.rediseno > 0) desglose.push(`${conteo.rediseno} rediseño`);
+
+    resumenBody.innerHTML = html;
+    resumenTotal.innerHTML = `
+        <div class="resumen-total-linea">
+            <span class="resumen-total-label">${seleccionados} logos seleccionados</span>
+            <span class="resumen-total-valor">${formatearPrecio(total)}</span>
+        </div>
+        <div class="resumen-total-desglose">${desglose.join(' + ')}</div>
+    `;
+
+    modalResumen.classList.add('visible');
+}
+
+function cerrarResumen() {
+    const modalResumen = document.getElementById('modal-resumen');
+    if (modalResumen) {
+        modalResumen.classList.remove('visible');
+    }
+}
+
+function confirmarYEnviar() {
+    cerrarResumen();
+    enviarWhatsAppDirecto();
+}
+
+function enviarWhatsAppDirecto() {
+    const resumen = generarResumen();
+    const mensaje = encodeURIComponent(resumen);
+    const url = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${mensaje}`;
+
+    window.open(url, '_blank');
+    mostrarToast('Abriendo WhatsApp...', 'info');
 }
 
 // ====================
@@ -498,6 +587,9 @@ window.guardarManual = guardarManual;
 window.confirmarLimpiar = confirmarLimpiar;
 window.cerrarModal = cerrarModal;
 window.ejecutarLimpiar = ejecutarLimpiar;
+window.mostrarResumen = mostrarResumen;
+window.cerrarResumen = cerrarResumen;
+window.confirmarYEnviar = confirmarYEnviar;
 
 // ====================
 // MODO OSCURO
