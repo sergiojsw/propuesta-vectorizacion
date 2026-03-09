@@ -1437,6 +1437,9 @@ body.dark-mode .form-hint {
     padding: 25px;
     margin: 30px 0;
     color: white;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .datos-pago-icon {
@@ -1445,6 +1448,8 @@ body.dark-mode .form-hint {
 
 .datos-pago-info {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .datos-pago-info h4 {
@@ -1454,8 +1459,9 @@ body.dark-mode .form-hint {
 
 .datos-pago-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    width: 100%;
 }
 
 .dato {
