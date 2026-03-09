@@ -5,7 +5,7 @@ const CONFIG = {
     PRECIO_POR_LOGO: 13000,
     LOCALE: 'es-CL',
     STORAGE_KEY: 'propuesta_formulario',
-    WHATSAPP_NUMERO: '56912345678', // Cambiar por número real
+    WHATSAPP_NUMERO: '56987438693', // Sergio Seguel
     AUTO_SAVE_DELAY: 2000
 };
 
