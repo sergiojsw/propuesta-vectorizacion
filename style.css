@@ -880,6 +880,16 @@ textarea::placeholder {
     transform: translateY(-1px);
 }
 
+.btn-email {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-email:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-1px);
+}
+
 /* Toast Notifications */
 #toast-container {
     position: fixed;
@@ -2103,12 +2113,12 @@ body.dark-mode .theme-icon-dark {
 }
 
 .modal-btn-success {
-    background: #25D366;
+    background: var(--color-primary);
     color: white;
 }
 
 .modal-btn-success:hover {
-    background: #128C7E;
+    background: var(--color-primary-light);
 }
 
 /* Dark mode para modal resumen */

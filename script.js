@@ -4,7 +4,8 @@
 const CONFIG = {
     LOCALE: 'es-CL',
     STORAGE_KEY: 'propuesta_formulario',
-    WHATSAPP_NUMERO: '56987438693', // Sergio Seguel
+    EMAIL_DESTINO: 'sergioseguel81@gmail.com', // Sergio Seguel
+    EMAIL_CLIENTE: 'carlosmarchantparra@gmail.com', // Carlos Marchant
     AUTO_SAVE_DELAY: 2000,
 
     // Precios por complejidad
@@ -350,9 +351,9 @@ function copiarResumen() {
 }
 
 // ====================
-// ENVIAR WHATSAPP
+// ENVIAR CORREO
 // ====================
-function enviarWhatsApp() {
+function enviarCorreo() {
     // Mostrar resumen primero para confirmación
     mostrarResumen();
 }
@@ -524,16 +525,32 @@ function cerrarResumen() {
 
 function confirmarYEnviar() {
     cerrarResumen();
-    enviarWhatsAppDirecto();
+    enviarCorreoDirecto();
 }
 
-function enviarWhatsAppDirecto() {
+function enviarCorreoDirecto() {
     const resumen = generarResumen();
-    const mensaje = encodeURIComponent(resumen);
-    const url = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}?text=${mensaje}`;
 
-    window.open(url, '_blank');
-    mostrarToast('Abriendo WhatsApp...', 'info');
+    // Calcular total para el asunto
+    let total = 0;
+    let seleccionados = 0;
+    for (let i = 1; i <= 9; i++) {
+        const checkbox = document.querySelector(`input[name="logo${i}_incluir"]`);
+        if (checkbox && checkbox.checked) {
+            seleccionados++;
+            const logoInfo = CONFIG.LOGOS[`logo${i}`];
+            total += CONFIG.PRECIOS[logoInfo.complejidad];
+        }
+    }
+
+    const asunto = encodeURIComponent(`Propuesta Vectorización - ${seleccionados} logos - ${formatearPrecio(total)}`);
+    const cuerpo = encodeURIComponent(resumen);
+
+    // Crear mailto con tu correo como destino
+    const url = `mailto:${CONFIG.EMAIL_DESTINO}?subject=${asunto}&body=${cuerpo}`;
+
+    window.location.href = url;
+    mostrarToast('Abriendo cliente de correo...', 'info');
 }
 
 // ====================
@@ -580,7 +597,7 @@ function toggleAdvanced(element) {
 
 // Hacer funciones globales
 window.copiarResumen = copiarResumen;
-window.enviarWhatsApp = enviarWhatsApp;
+window.enviarCorreo = enviarCorreo;
 window.limpiarFormulario = limpiarFormulario;
 window.toggleAdvanced = toggleAdvanced;
 window.guardarManual = guardarManual;
