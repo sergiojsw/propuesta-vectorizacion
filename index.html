@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propuesta de Vectorización de Logos</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Propuesta profesional de vectorización de 9 logos. Transformación de imágenes a formato vectorial SVG, AI, EPS. Precio: $13.000 por logo.">
+    <meta name="author" content="Sergio Seguel Wollerman">
+    <meta property="og:title" content="Propuesta de Vectorización de Logos">
+    <meta property="og:description" content="Servicio profesional de vectorización. 9 logos, 2 revisiones por logo, múltiples formatos de entrega.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="noindex, nofollow">
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Toggle Modo Oscuro -->
-    <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
-        <span class="theme-icon-light">&#9728;</span>
-        <span class="theme-icon-dark">&#9790;</span>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar entre modo claro y oscuro">
+        <span class="theme-icon-light" aria-hidden="true">&#9728;</span>
+        <span class="theme-icon-dark" aria-hidden="true">&#9790;</span>
     </button>
+
+    <!-- Toast Container -->
+    <div id="toast-container" aria-live="polite"></div>
 
     <div class="container">
         <!-- Header -->
@@ -665,13 +677,20 @@
             <!-- Resumen y botones -->
             <div class="form-resumen">
                 <div class="resumen-info">
-                    <span>Logos seleccionados: <strong id="logos-count">9</strong></span>
-                    <span>Total: <strong id="total-precio">$117.000</strong></span>
+                    <span>Logos seleccionados: <strong id="logos-count" aria-live="polite">9</strong></span>
+                    <span>Total: <strong id="total-precio" aria-live="polite">$117.000</strong></span>
                 </div>
                 <div class="form-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="window.print()">&#128424; Imprimir / Guardar PDF</button>
-                    <button type="button" class="btn btn-primary" onclick="copiarResumen()">&#128203; Copiar Resumen</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.print()" aria-label="Imprimir o guardar como PDF">&#128424; Imprimir</button>
+                    <button type="button" class="btn btn-primary" onclick="copiarResumen()" aria-label="Copiar resumen al portapapeles">&#128203; Copiar</button>
+                    <button type="button" class="btn btn-whatsapp" onclick="enviarWhatsApp()" aria-label="Enviar propuesta por WhatsApp">&#128172; WhatsApp</button>
                 </div>
+            </div>
+
+            <!-- Indicador de guardado -->
+            <div class="guardado-indicator" id="guardado-indicator">
+                <span class="guardado-icon">&#10003;</span>
+                <span class="guardado-text">Cambios guardados</span>
             </div>
         </form>
 

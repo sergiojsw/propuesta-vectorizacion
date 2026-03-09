@@ -1,3 +1,39 @@
+/* CSS Variables */
+:root {
+    --color-primary: #1e40af;
+    --color-primary-light: #3b82f6;
+    --color-primary-lighter: #60a5fa;
+    --color-accent: #2563eb;
+    --color-success: #059669;
+    --color-success-light: #10b981;
+    --color-warning: #fbbf24;
+    --color-warning-dark: #92400e;
+    --color-danger: #ef4444;
+
+    --bg-body: #f1f5f9;
+    --bg-container: white;
+    --bg-card: #fafafa;
+    --bg-card-hover: #f8fafc;
+    --bg-input: white;
+
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+    --border-color: #e2e8f0;
+    --border-color-dark: #d1d5db;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +43,9 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: #f1f5f9;
+    color: var(--text-primary);
+    background: var(--bg-body);
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -748,6 +785,89 @@ textarea::placeholder {
     background: rgba(255,255,255,0.3);
 }
 
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-1px);
+}
+
+/* Toast Notifications */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateX(100%);
+    animation: toastSlideIn 0.3s ease forwards;
+    max-width: 350px;
+}
+
+.toast.toast-out {
+    animation: toastSlideOut 0.3s ease forwards;
+}
+
+.toast-success { background: var(--color-success); }
+.toast-error { background: var(--color-danger); }
+.toast-warning { background: var(--color-warning); color: #1e293b; }
+.toast-info { background: var(--color-accent); }
+
+@keyframes toastSlideIn {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastSlideOut {
+    to { opacity: 0; transform: translateX(100%); }
+}
+
+/* Guardado Indicator */
+.guardado-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: #dcfce7;
+    border-radius: var(--radius-sm);
+    color: #166534;
+    font-size: 13px;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.guardado-indicator.visible {
+    opacity: 1;
+}
+
+.guardado-icon {
+    font-size: 16px;
+}
+
+body.dark-mode .guardado-indicator {
+    background: #14532d;
+    color: #4ade80;
+}
+
 /* Datos de Pago */
 .datos-pago {
     display: flex;
@@ -1257,6 +1377,38 @@ body.dark-mode .theme-icon-dark {
     .radio-group {
         flex-direction: column;
         gap: 10px;
+    }
+
+    #toast-container {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .toast {
+        max-width: 100%;
+    }
+
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .header {
+        padding-bottom: 15px;
+    }
+
+    .contacto-box {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 20px;
+    }
+
+    .contacto-divider {
+        display: none;
     }
 }
 
