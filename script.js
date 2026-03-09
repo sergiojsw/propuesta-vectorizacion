@@ -324,10 +324,27 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarTotal();
 });
 
+// ====================
+// TOGGLE AVANZADO
+// ====================
+function toggleAdvanced(element) {
+    const content = element.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+
+    if (isOpen) {
+        content.classList.remove('open');
+        element.classList.remove('open');
+    } else {
+        content.classList.add('open');
+        element.classList.add('open');
+    }
+}
+
 // Hacer funciones globales
 window.copiarResumen = copiarResumen;
 window.enviarWhatsApp = enviarWhatsApp;
 window.limpiarFormulario = limpiarFormulario;
+window.toggleAdvanced = toggleAdvanced;
 
 // ====================
 // MODO OSCURO

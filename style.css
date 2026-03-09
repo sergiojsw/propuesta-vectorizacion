@@ -992,36 +992,84 @@ body.dark-mode .guardado-indicator {
     display: block;
 }
 
-/* Collapsible sections */
-.form-section-toggle {
+/* Collapsible advanced sections */
+.advanced-toggle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 8px;
     cursor: pointer;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 12px;
-}
-
-.form-section-toggle h4 {
-    font-size: 14px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px dashed var(--color-accent);
+    border-radius: var(--radius-sm);
+    margin: 16px 0;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--color-primary);
-    margin: 0;
+    transition: all 0.2s;
 }
 
-.form-section-toggle .toggle-icon {
-    font-size: 12px;
-    transition: transform 0.2s;
+.advanced-toggle:hover {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
 }
 
-.form-section-content {
-    max-height: 2000px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+.advanced-toggle .toggle-icon {
+    font-size: 10px;
+    transition: transform 0.3s ease;
 }
 
-.form-section-content.collapsed {
+.advanced-toggle.open .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.advanced-content {
     max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    margin-top: -8px;
+}
+
+.advanced-content.open {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.advanced-content .form-fieldset {
+    background: white;
+}
+
+/* Basic questions styling */
+.basic-questions {
+    padding-bottom: 8px;
+}
+
+.basic-questions .form-group {
+    margin-bottom: 16px;
+}
+
+/* Dark mode for collapsible */
+body.dark-mode .advanced-toggle {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%);
+    border-color: #3b82f6;
+    color: #93c5fd;
+}
+
+body.dark-mode .advanced-toggle:hover {
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+body.dark-mode .advanced-content {
+    background: #1e293b;
+    border-color: #475569;
+}
+
+body.dark-mode .advanced-content .form-fieldset {
+    background: #334155;
 }
 
 /* Dark mode para nuevos elementos */
