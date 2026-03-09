@@ -868,6 +868,205 @@ body.dark-mode .guardado-indicator {
     color: #4ade80;
 }
 
+/* Fieldsets para organización del formulario */
+.form-fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 16px;
+    background: var(--bg-card-hover);
+}
+
+.form-fieldset legend {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--color-primary);
+    padding: 0 8px;
+    margin-bottom: 8px;
+}
+
+.form-fieldset .form-group {
+    margin-bottom: 14px;
+}
+
+.form-fieldset .form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Grupos de checkbox mejorados */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 6px 10px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.checkbox-group label:hover {
+    border-color: var(--color-accent);
+    background: #eff6ff;
+}
+
+.checkbox-group label:has(input:checked) {
+    border-color: var(--color-accent);
+    background: #dbeafe;
+    color: var(--color-primary);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+}
+
+/* Inputs y Selects mejorados */
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-color {
+    width: 50px;
+    height: 36px;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Conditional fields */
+.conditional-field {
+    display: none;
+    margin-top: 12px;
+    padding: 12px;
+    background: #fef3c7;
+    border-radius: 6px;
+    border-left: 3px solid var(--color-warning);
+}
+
+.conditional-field.visible {
+    display: block;
+}
+
+/* Collapsible sections */
+.form-section-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 12px;
+}
+
+.form-section-toggle h4 {
+    font-size: 14px;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.form-section-toggle .toggle-icon {
+    font-size: 12px;
+    transition: transform 0.2s;
+}
+
+.form-section-content {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.form-section-content.collapsed {
+    max-height: 0;
+}
+
+/* Dark mode para nuevos elementos */
+body.dark-mode .form-fieldset {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-mode .form-fieldset legend {
+    color: #60a5fa;
+}
+
+body.dark-mode .checkbox-group label {
+    background: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark-mode .checkbox-group label:hover {
+    border-color: #3b82f6;
+    background: #1e3a5f;
+}
+
+body.dark-mode .checkbox-group label:has(input:checked) {
+    border-color: #3b82f6;
+    background: #1e3a5f;
+    color: #60a5fa;
+}
+
+body.dark-mode .form-input,
+body.dark-mode .form-select {
+    background: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark-mode .conditional-field {
+    background: #422006;
+    border-color: #92400e;
+}
+
+body.dark-mode .form-hint {
+    color: #94a3b8;
+}
+
 /* Datos de Pago */
 .datos-pago {
     display: flex;

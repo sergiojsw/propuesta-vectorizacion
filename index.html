@@ -334,13 +334,13 @@
 
         <!-- FORMULARIO -->
         <h2 class="section-title form-title">&#128221; Formulario de Necesidades</h2>
-        <p class="section-desc">Completa este formulario indicando tus preferencias para cada logo:</p>
+        <p class="section-desc">Completa este formulario indicando tus preferencias para cada logo. Las opciones avanzadas te permiten especificar exactamente lo que necesitas:</p>
 
         <form id="formulario" class="formulario">
             <!-- Logo 1 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/01-cock-sparrer.jpg" alt="">
+                    <img src="logos/01-cock-sparrer.jpg" alt="Cock Sparrer">
                     <div class="form-logo-info">
                         <span class="form-logo-num">1</span>
                         <span class="form-logo-name">Cock Sparrer (Alas rojas)</span>
@@ -352,17 +352,95 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>¿Mantener colores originales?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo1_color" value="mantener" checked> Mantener rojo original</label>
-                            <label><input type="radio" name="logo1_color" value="cambiar"> Cambiar color</label>
-                            <label><input type="radio" name="logo1_color" value="bn"> Versión blanco/negro</label>
+                    <!-- Colores -->
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <label>Color base:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo1_color" value="mantener" checked> Mantener rojo original</label>
+                                <label><input type="radio" name="logo1_color" value="personalizado"> Color personalizado</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Versiones adicionales:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo1_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo1_v_mono"> Monocromático</label>
+                                <label><input type="checkbox" name="logo1_v_invertido"> Invertido (fondos oscuros)</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Estilo -->
+                    <fieldset class="form-fieldset">
+                        <legend>&#9999; Estilo y Detalle</legend>
+                        <div class="form-group">
+                            <label>Nivel de detalle:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo1_detalle" value="simple" checked> Simple (formas limpias)</label>
+                                <label><input type="radio" name="logo1_detalle" value="medio"> Detalle medio</label>
+                                <label><input type="radio" name="logo1_detalle" value="alto"> Alta fidelidad</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Acabados:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo1_acabado" value="angular" checked> Angular/Geométrico</label>
+                                <label><input type="radio" name="logo1_acabado" value="suave"> Suave/Redondeado</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Usos -->
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos Principales</legend>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo1_uso_web"> Web/Digital</label>
+                                <label><input type="checkbox" name="logo1_uso_redes" checked> Redes sociales</label>
+                                <label><input type="checkbox" name="logo1_uso_impresion" checked> Impresión</label>
+                                <label><input type="checkbox" name="logo1_uso_serigrafia" checked> Serigrafía</label>
+                                <label><input type="checkbox" name="logo1_uso_bordado"> Bordado</label>
+                                <label><input type="checkbox" name="logo1_uso_sticker" checked> Stickers</label>
+                                <label><input type="checkbox" name="logo1_uso_grande"> Gran formato</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Variantes -->
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes y Formatos</legend>
+                        <div class="form-group">
+                            <label>Orientaciones:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo1_ori_horizontal" checked> Horizontal</label>
+                                <label><input type="checkbox" name="logo1_ori_vertical"> Vertical</label>
+                                <label><input type="checkbox" name="logo1_ori_cuadrado"> Cuadrado</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Versiones especiales:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo1_var_icono" checked> Solo icono</label>
+                                <label><input type="checkbox" name="logo1_var_favicon"> Favicon (16-32px)</label>
+                                <label><input type="checkbox" name="logo1_var_app"> Icono App</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Fondos PNG:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo1_fondo_trans" checked> Transparente</label>
+                                <label><input type="checkbox" name="logo1_fondo_blanco" checked> Blanco</label>
+                                <label><input type="checkbox" name="logo1_fondo_negro"> Negro</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Notas -->
                     <div class="form-group">
                         <label>Indicaciones especiales:</label>
-                        <textarea name="logo1_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <textarea name="logo1_notas" rows="2" placeholder="Elementos críticos, cambios específicos, referencias..."></textarea>
                     </div>
                 </div>
             </div>
@@ -370,7 +448,7 @@
             <!-- Logo 2 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/02-vasco.jpg" alt="">
+                    <img src="logos/02-vasco.jpg" alt="Vasco da Gama">
                     <div class="form-logo-info">
                         <span class="form-logo-num">2</span>
                         <span class="form-logo-name">Vasco da Gama (Escudo)</span>
@@ -382,17 +460,64 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>¿Mantener colores originales?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo2_color" value="mantener" checked> Mantener colores</label>
-                            <label><input type="radio" name="logo2_color" value="cambiar"> Cambiar color</label>
-                            <label><input type="radio" name="logo2_color" value="bn"> Versión blanco/negro</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <label>Color base:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo2_color" value="mantener" checked> Mantener originales</label>
+                                <label><input type="radio" name="logo2_color" value="personalizado"> Personalizar</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Versiones adicionales:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo2_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo2_v_mono"> Monocromático</label>
+                                <label><input type="checkbox" name="logo2_v_invertido"> Invertido</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#9999; Estilo</legend>
+                        <div class="form-group">
+                            <label>Nivel de detalle:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo2_detalle" value="simple" checked> Simple</label>
+                                <label><input type="radio" name="logo2_detalle" value="medio"> Medio</label>
+                                <label><input type="radio" name="logo2_detalle" value="alto"> Alta fidelidad</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo2_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo2_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo2_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo2_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo2_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo2_uso_sticker" checked> Stickers</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo2_var_icono" checked> Solo icono</label>
+                                <label><input type="checkbox" name="logo2_var_favicon"> Favicon</label>
+                                <label><input type="checkbox" name="logo2_fondo_trans" checked> Fondo transparente</label>
+                                <label><input type="checkbox" name="logo2_fondo_blanco" checked> Fondo blanco</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo2_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo2_notas" rows="2" placeholder="Detalles adicionales..."></textarea>
                     </div>
                 </div>
             </div>
@@ -400,7 +525,7 @@
             <!-- Logo 3 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/03-abeja.jpg" alt="">
+                    <img src="logos/03-abeja.jpg" alt="Abeja Lineal">
                     <div class="form-logo-info">
                         <span class="form-logo-num">3</span>
                         <span class="form-logo-name">Abeja Lineal</span>
@@ -412,24 +537,72 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>Estilo de la abeja (se rediseñará sin marca de agua):</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo3_estilo" value="lineal" checked> Mantener estilo lineal</label>
-                            <label><input type="radio" name="logo3_estilo" value="detallada"> Más detallada</label>
-                            <label><input type="radio" name="logo3_estilo" value="simple"> Más simple</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Estilo de Rediseño</legend>
+                        <div class="form-group">
+                            <label>Estilo de la abeja (sin marca de agua):</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo3_estilo" value="lineal" checked> Lineal minimalista</label>
+                                <label><input type="radio" name="logo3_estilo" value="geometrico"> Geométrico</label>
+                                <label><input type="radio" name="logo3_estilo" value="detallada"> Más detallada</label>
+                                <label><input type="radio" name="logo3_estilo" value="cartoon"> Estilo cartoon</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>¿Agregar color?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo3_color" value="bn" checked> Solo líneas (B/N)</label>
-                            <label><input type="radio" name="logo3_color" value="color"> Agregar colores</label>
+                        <div class="form-group">
+                            <label>Grosor de líneas:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo3_grosor" value="fino"> Fino</label>
+                                <label><input type="radio" name="logo3_grosor" value="medio" checked> Medio</label>
+                                <label><input type="radio" name="logo3_grosor" value="grueso"> Grueso</label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo3_color" value="bn" checked> Solo líneas (B/N)</label>
+                                <label><input type="radio" name="logo3_color" value="amarillo"> Amarillo/Negro clásico</label>
+                                <label><input type="radio" name="logo3_color" value="dorado"> Dorado elegante</label>
+                                <label><input type="radio" name="logo3_color" value="custom"> Color personalizado</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Versiones adicionales:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo3_v_bn" checked> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo3_v_invertido"> Invertido</label>
+                                <label><input type="checkbox" name="logo3_v_relleno"> Con relleno</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo3_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo3_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo3_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo3_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo3_uso_bordado" checked> Bordado</label>
+                            <label><input type="checkbox" name="logo3_uso_sticker" checked> Stickers</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo3_var_icono" checked> Solo icono</label>
+                            <label><input type="checkbox" name="logo3_var_favicon"> Favicon</label>
+                            <label><input type="checkbox" name="logo3_var_horizontal"> Con texto horizontal</label>
+                            <label><input type="checkbox" name="logo3_fondo_trans" checked> Transparente</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo3_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Referencias o indicaciones para el rediseño:</label>
+                        <textarea name="logo3_notas" rows="3" placeholder="Describe cómo te gustaría la abeja, referencias visuales, estilo deseado..."></textarea>
                     </div>
                 </div>
             </div>
@@ -437,7 +610,7 @@
             <!-- Logo 4 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/04-ztp.png" alt="">
+                    <img src="logos/04-ztp.png" alt="ZTP">
                     <div class="form-logo-info">
                         <span class="form-logo-num">4</span>
                         <span class="form-logo-name">ZTP (Óvalo dorado)</span>
@@ -449,17 +622,72 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>Tratamiento del efecto 3D/metálico:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo4_efecto" value="metalico" checked> Recrear efecto metálico</label>
-                            <label><input type="radio" name="logo4_efecto" value="plano"> Versión plana</label>
-                            <label><input type="radio" name="logo4_efecto" value="ambas"> Ambas versiones</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#10024; Efectos 3D/Metálico</legend>
+                        <div class="form-group">
+                            <label>Tratamiento del efecto dorado:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo4_efecto" value="metalico" checked> Recrear efecto metálico</label>
+                                <label><input type="radio" name="logo4_efecto" value="degradado"> Degradado suave</label>
+                                <label><input type="radio" name="logo4_efecto" value="plano"> Versión plana</label>
+                                <label><input type="radio" name="logo4_efecto" value="ambas"> Ambas (metálico + plana)</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Efectos adicionales:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo4_ef_sombra"> Sombra suave</label>
+                                <label><input type="checkbox" name="logo4_ef_brillo"> Efecto brillo</label>
+                                <label><input type="checkbox" name="logo4_ef_relieve"> Relieve 3D</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo4_color" value="dorado" checked> Dorado original</label>
+                                <label><input type="radio" name="logo4_color" value="plateado"> Plateado</label>
+                                <label><input type="radio" name="logo4_color" value="custom"> Otro color</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Versiones:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo4_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo4_v_mono"> Monocromático</label>
+                                <label><input type="checkbox" name="logo4_v_invertido"> Invertido</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo4_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo4_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo4_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo4_uso_serigrafia"> Serigrafía</label>
+                            <label><input type="checkbox" name="logo4_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo4_uso_sticker" checked> Stickers</label>
+                            <label><input type="checkbox" name="logo4_uso_grande"> Gran formato</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo4_var_icono" checked> Solo icono</label>
+                            <label><input type="checkbox" name="logo4_var_favicon"> Favicon</label>
+                            <label><input type="checkbox" name="logo4_fondo_trans" checked> Transparente</label>
+                            <label><input type="checkbox" name="logo4_fondo_negro"> Fondo negro</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo4_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo4_notas" rows="2" placeholder="Detalles sobre el efecto metálico deseado..."></textarea>
                     </div>
                 </div>
             </div>
@@ -467,7 +695,7 @@
             <!-- Logo 5 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/05-zintrop-cerveza.png" alt="">
+                    <img src="logos/05-zintrop-cerveza.png" alt="ZINTROP Cerveza">
                     <div class="form-logo-info">
                         <span class="form-logo-num">5</span>
                         <span class="form-logo-name">ZINTROP Cerveza</span>
@@ -479,24 +707,63 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>Tratamiento de efectos dorados:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo5_efecto" value="degradados" checked> Recrear degradados</label>
-                            <label><input type="radio" name="logo5_efecto" value="plano"> Colores planos</label>
-                            <label><input type="radio" name="logo5_efecto" value="ambas"> Ambas versiones</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#10024; Efectos Dorados</legend>
+                        <div class="form-group">
+                            <label>Tratamiento de degradados:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo5_efecto" value="degradados" checked> Recrear degradados dorados</label>
+                                <label><input type="radio" name="logo5_efecto" value="plano"> Colores planos</label>
+                                <label><input type="radio" name="logo5_efecto" value="ambas"> Ambas versiones</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>¿Modificar textos?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo5_textos" value="mantener" checked> Mantener textos</label>
-                            <label><input type="radio" name="logo5_textos" value="cambiar"> Cambiar algún texto</label>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128172; Textos</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo5_textos" value="mantener" checked> Mantener todos los textos</label>
+                                <label><input type="radio" name="logo5_textos" value="cambiar"> Modificar algún texto</label>
+                                <label><input type="radio" name="logo5_textos" value="solo_zintrop"> Solo "ZINTROP"</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Tipografía:</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo5_tipografia" value="similar" checked> Similar al original</label>
+                                <label><input type="radio" name="logo5_tipografia" value="moderna"> Más moderna</label>
+                                <label><input type="radio" name="logo5_tipografia" value="clasica"> Más clásica</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo5_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo5_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo5_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo5_uso_etiqueta" checked> Etiquetas</label>
+                            <label><input type="checkbox" name="logo5_uso_serigrafia"> Serigrafía</label>
+                            <label><input type="checkbox" name="logo5_uso_grande"> Gran formato</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo5_var_completo" checked> Logo completo</label>
+                            <label><input type="checkbox" name="logo5_var_icono"> Solo escudo</label>
+                            <label><input type="checkbox" name="logo5_var_horizontal"> Versión horizontal</label>
+                            <label><input type="checkbox" name="logo5_v_bn"> Blanco/Negro</label>
+                            <label><input type="checkbox" name="logo5_fondo_trans" checked> Transparente</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo5_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo5_notas" rows="2" placeholder="Cambios en textos, detalles del escudo..."></textarea>
                     </div>
                 </div>
             </div>
@@ -504,7 +771,7 @@
             <!-- Logo 6 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/06-zintrop-escudo.jpg" alt="">
+                    <img src="logos/06-zintrop-escudo.jpg" alt="ZINTROP Escudo">
                     <div class="form-logo-info">
                         <span class="form-logo-num">6</span>
                         <span class="form-logo-name">ZINTROP Escudo Negro</span>
@@ -516,24 +783,62 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>Estilo del escudo:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo6_estilo" value="metalico" checked> Efecto metálico/3D</label>
-                            <label><input type="radio" name="logo6_estilo" value="plano"> Versión plana</label>
-                            <label><input type="radio" name="logo6_estilo" value="ambas"> Ambas versiones</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#10024; Estilo del Escudo</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo6_estilo" value="metalico" checked> Efecto metálico/3D</label>
+                                <label><input type="radio" name="logo6_estilo" value="plano"> Versión plana</label>
+                                <label><input type="radio" name="logo6_estilo" value="ambas"> Ambas versiones</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>La abeja:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo6_abeja" value="actual" checked> Estilo actual</label>
-                            <label><input type="radio" name="logo6_abeja" value="logo3"> Usar la del Logo 3</label>
+                        <div class="form-group">
+                            <label>Efectos:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo6_ef_sombra"> Sombra</label>
+                                <label><input type="checkbox" name="logo6_ef_brillo"> Brillo</label>
+                                <label><input type="checkbox" name="logo6_ef_textura"> Textura metálica</label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128029; La Abeja</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo6_abeja" value="actual" checked> Mantener estilo actual</label>
+                                <label><input type="radio" name="logo6_abeja" value="logo3"> Usar diseño del Logo 3</label>
+                                <label><input type="radio" name="logo6_abeja" value="nueva"> Nuevo diseño coordinado</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo6_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo6_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo6_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo6_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo6_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo6_uso_grande"> Gran formato</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo6_var_completo" checked> Completo</label>
+                            <label><input type="checkbox" name="logo6_var_icono"> Solo escudo</label>
+                            <label><input type="checkbox" name="logo6_v_bn"> Blanco/Negro</label>
+                            <label><input type="checkbox" name="logo6_fondo_trans" checked> Transparente</label>
+                            <label><input type="checkbox" name="logo6_fondo_negro"> Fondo negro</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo6_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo6_notas" rows="2" placeholder="Detalles del escudo, la abeja..."></textarea>
                     </div>
                 </div>
             </div>
@@ -541,7 +846,7 @@
             <!-- Logo 7 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/07-pzpn.jpg" alt="">
+                    <img src="logos/07-pzpn.jpg" alt="PZPN">
                     <div class="form-logo-info">
                         <span class="form-logo-num">7</span>
                         <span class="form-logo-name">PZPN (Águila polaca)</span>
@@ -553,17 +858,62 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>¿Mantener colores?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo7_color" value="mantener" checked> Mantener rojo/blanco</label>
-                            <label><input type="radio" name="logo7_color" value="cambiar"> Cambiar paleta</label>
-                            <label><input type="radio" name="logo7_color" value="mono"> Monocromático</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo7_color" value="mantener" checked> Rojo/Blanco original</label>
+                                <label><input type="radio" name="logo7_color" value="cambiar"> Cambiar paleta</label>
+                                <label><input type="radio" name="logo7_color" value="mono"> Monocromático</label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Versiones:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo7_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo7_v_invertido"> Invertido</label>
+                                <label><input type="checkbox" name="logo7_v_dorado"> Dorado</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#9999; Estilo</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo7_detalle" value="simple" checked> Simple/Limpio</label>
+                                <label><input type="radio" name="logo7_detalle" value="medio"> Detalle medio</label>
+                                <label><input type="radio" name="logo7_detalle" value="fiel"> Fiel al original</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo7_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo7_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo7_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo7_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo7_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo7_uso_sticker" checked> Stickers</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo7_var_icono" checked> Solo águila</label>
+                            <label><input type="checkbox" name="logo7_var_favicon"> Favicon</label>
+                            <label><input type="checkbox" name="logo7_fondo_trans" checked> Transparente</label>
+                            <label><input type="checkbox" name="logo7_fondo_blanco" checked> Fondo blanco</label>
+                            <label><input type="checkbox" name="logo7_fondo_rojo"> Fondo rojo</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo7_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo7_notas" rows="2" placeholder="Detalles del águila..."></textarea>
                     </div>
                 </div>
             </div>
@@ -571,7 +921,7 @@
             <!-- Logo 8 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/08-zintrop-futbol-v1.jpg" alt="">
+                    <img src="logos/08-zintrop-futbol-v1.jpg" alt="ZINTROP Fútbol v1">
                     <div class="form-logo-info">
                         <span class="form-logo-num">8</span>
                         <span class="form-logo-name">ZINTROP Fútbol (v1)</span>
@@ -583,24 +933,64 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>Colores del escudo:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo8_color" value="mantener" checked> Mantener rojo/blanco</label>
-                            <label><input type="radio" name="logo8_color" value="cambiar"> Cambiar colores</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo8_color" value="mantener" checked> Rojo/Blanco original</label>
+                                <label><input type="radio" name="logo8_color" value="cambiar"> Cambiar colores</label>
+                                <label><input type="radio" name="logo8_color" value="alternativo"> Versión alternativa</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>La abeja:</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo8_abeja" value="actual" checked> Estilo actual</label>
-                            <label><input type="radio" name="logo8_abeja" value="logo3"> Usar la del Logo 3</label>
-                            <label><input type="radio" name="logo8_abeja" value="blanca"> Abeja blanca</label>
+                        <div class="form-group">
+                            <label>Versiones:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo8_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo8_v_mono"> Monocromático</label>
+                                <label><input type="checkbox" name="logo8_v_invertido"> Invertido</label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128029; La Abeja</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo8_abeja" value="actual" checked> Estilo actual</label>
+                                <label><input type="radio" name="logo8_abeja" value="logo3"> Usar diseño Logo 3</label>
+                                <label><input type="radio" name="logo8_abeja" value="blanca"> Abeja blanca</label>
+                                <label><input type="radio" name="logo8_abeja" value="silueta"> Solo silueta</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo8_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo8_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo8_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo8_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo8_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo8_uso_sticker" checked> Stickers</label>
+                            <label><input type="checkbox" name="logo8_uso_camiseta" checked> Camisetas</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo8_var_completo" checked> Completo</label>
+                            <label><input type="checkbox" name="logo8_var_icono"> Solo escudo</label>
+                            <label><input type="checkbox" name="logo8_var_favicon"> Favicon</label>
+                            <label><input type="checkbox" name="logo8_fondo_trans" checked> Transparente</label>
+                            <label><input type="checkbox" name="logo8_fondo_blanco" checked> Fondo blanco</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo8_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Indicaciones:</label>
+                        <textarea name="logo8_notas" rows="2" placeholder="Detalles del escudo, la abeja, textos..."></textarea>
                     </div>
                 </div>
             </div>
@@ -608,7 +998,7 @@
             <!-- Logo 9 -->
             <div class="form-logo-card">
                 <div class="form-logo-header">
-                    <img src="logos/09-zintrop-futbol-v2.jpg" alt="">
+                    <img src="logos/09-zintrop-futbol-v2.jpg" alt="ZINTROP Fútbol v2">
                     <div class="form-logo-info">
                         <span class="form-logo-num">9</span>
                         <span class="form-logo-name">ZINTROP Fútbol (v2)</span>
@@ -620,16 +1010,59 @@
                     </label>
                 </div>
                 <div class="form-logo-body">
-                    <div class="form-group">
-                        <label>¿Diferencias respecto al Logo 8?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="logo9_dif" value="igual" checked> Idéntico al Logo 8</label>
-                            <label><input type="radio" name="logo9_dif" value="diferente"> Con diferencias</label>
+                    <fieldset class="form-fieldset">
+                        <legend>&#128260; Relación con Logo 8</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo9_relacion" value="igual" checked> Idéntico al Logo 8</label>
+                                <label><input type="radio" name="logo9_relacion" value="variante"> Variante del Logo 8</label>
+                                <label><input type="radio" name="logo9_relacion" value="diferente"> Tratamiento independiente</label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#127912; Colores (si es diferente)</legend>
+                        <div class="form-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="logo9_color" value="mantener" checked> Igual al Logo 8</label>
+                                <label><input type="radio" name="logo9_color" value="cambiar"> Paleta diferente</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Versiones:</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="logo9_v_bn"> Blanco/Negro</label>
+                                <label><input type="checkbox" name="logo9_v_invertido"> Invertido</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128187; Usos</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo9_uso_web"> Web</label>
+                            <label><input type="checkbox" name="logo9_uso_redes" checked> Redes</label>
+                            <label><input type="checkbox" name="logo9_uso_impresion" checked> Impresión</label>
+                            <label><input type="checkbox" name="logo9_uso_serigrafia" checked> Serigrafía</label>
+                            <label><input type="checkbox" name="logo9_uso_bordado"> Bordado</label>
+                            <label><input type="checkbox" name="logo9_uso_sticker" checked> Stickers</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-fieldset">
+                        <legend>&#128194; Variantes</legend>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="logo9_var_completo" checked> Completo</label>
+                            <label><input type="checkbox" name="logo9_var_icono"> Solo escudo</label>
+                            <label><input type="checkbox" name="logo9_fondo_trans" checked> Transparente</label>
+                            <label><input type="checkbox" name="logo9_fondo_blanco" checked> Fondo blanco</label>
+                        </div>
+                    </fieldset>
+
                     <div class="form-group">
-                        <label>Indicaciones especiales:</label>
-                        <textarea name="logo9_notas" rows="2" placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                        <label>Diferencias específicas respecto al Logo 8:</label>
+                        <textarea name="logo9_notas" rows="2" placeholder="¿Qué cambios específicos tiene este logo?"></textarea>
                     </div>
                 </div>
             </div>
