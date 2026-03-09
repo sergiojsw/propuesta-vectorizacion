@@ -225,8 +225,14 @@
         <!-- Precio -->
         <section class="precio-section">
             <h3>Inversión Total (9 logos)</h3>
-            <div class="precio-total">$117.000</div>
-            <div class="precio-sub">$13.000 por logo</div>
+            <div class="precio-total">$130.000</div>
+            <div class="precio-sub">Precio según complejidad</div>
+            <div class="precio-desglose-section">
+                <div class="precio-desglose-item"><span>3 Simples</span><span>× $10.000</span><span>= $30.000</span></div>
+                <div class="precio-desglose-item"><span>2 Medios</span><span>× $13.000</span><span>= $26.000</span></div>
+                <div class="precio-desglose-item"><span>3 Complejos</span><span>× $18.000</span><span>= $54.000</span></div>
+                <div class="precio-desglose-item"><span>1 Rediseño</span><span>× $20.000</span><span>= $20.000</span></div>
+            </div>
             <div class="precio-detalle">
                 <div class="precio-item"><span class="valor">9</span><span class="label">Logos</span></div>
                 <div class="precio-item"><span class="valor">18</span><span class="label">Revisiones</span></div>
@@ -242,43 +248,46 @@
             <div class="pago-card destacado">
                 <div class="pago-etapa">Opción A</div>
                 <div class="pago-tipo">2 pagos</div>
-                <div class="pago-monto">$58.500 c/u</div>
+                <div class="pago-monto">$65.000 c/u</div>
                 <div class="pago-cuando">50% al inicio<br>50% al entregar</div>
             </div>
             <div class="pago-card">
                 <div class="pago-etapa">Opción B</div>
                 <div class="pago-tipo">3 cuotas</div>
-                <div class="pago-monto">$39.000 c/u</div>
+                <div class="pago-monto">$43.333 c/u</div>
                 <div class="pago-cuando">Pago mensual<br>durante 3 meses</div>
             </div>
             <div class="pago-card">
                 <div class="pago-etapa">Opción C</div>
                 <div class="pago-tipo">Contado</div>
-                <div class="pago-monto">$117.000</div>
+                <div class="pago-monto">$130.000</div>
                 <div class="pago-cuando">Pago único<br>al confirmar</div>
             </div>
         </div>
 
         <!-- Tabla de precios -->
         <div class="tabla-precios">
-            <h4>&#128203; ¿Necesitas menos logos?</h4>
-            <p>El precio se calcula a <strong>$13.000 por logo</strong>:</p>
+            <h4>&#128203; Precios según Complejidad</h4>
+            <p>El precio varía según el trabajo requerido:</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                        <th>2 Cuotas</th>
-                        <th>3 Cuotas</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Logos</th>
+                        <th>Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="highlight"><td><strong>9 logos</strong></td><td><strong>$117.000</strong></td><td>$58.500 x2</td><td>$39.000 x3</td></tr>
-                    <tr><td>6 logos</td><td><strong>$78.000</strong></td><td>$39.000 x2</td><td>$26.000 x3</td></tr>
-                    <tr><td>4 logos</td><td><strong>$52.000</strong></td><td>$26.000 x2</td><td>$17.333 x3</td></tr>
-                    <tr><td>3 logos</td><td><strong>$39.000</strong></td><td>$19.500 x2</td><td>$13.000 x3</td></tr>
+                    <tr><td><span class="badge badge-simple">Simple</span></td><td><strong>$10.000</strong></td><td>1, 2, 7</td><td>Vectorización directa</td></tr>
+                    <tr><td><span class="badge badge-medio">Medio</span></td><td><strong>$13.000</strong></td><td>8, 9</td><td>Más detalles y ajustes</td></tr>
+                    <tr><td><span class="badge badge-complejo">Complejo</span></td><td><strong>$18.000</strong></td><td>4, 5, 6</td><td>Efectos 3D, degradados</td></tr>
+                    <tr><td><span class="badge badge-rediseno">Rediseño</span></td><td><strong>$20.000</strong></td><td>3</td><td>Crear desde cero</td></tr>
                 </tbody>
             </table>
+            <div class="tabla-nota">
+                <strong>Total 9 logos:</strong> $130.000 → 2 cuotas de $65.000 ó 3 cuotas de $43.333
+            </div>
         </div>
 
         <!-- Datos de Transferencia -->
@@ -1070,9 +1079,9 @@
                     <div class="form-group">
                         <label>Opción de pago preferida:</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="pago" value="2cuotas" checked> 2 pagos ($58.500 c/u)</label>
-                            <label><input type="radio" name="pago" value="3cuotas"> 3 cuotas ($39.000 c/u)</label>
-                            <label><input type="radio" name="pago" value="contado"> Contado ($117.000)</label>
+                            <label><input type="radio" name="pago" value="2cuotas" checked> 2 pagos ($65.000 c/u)</label>
+                            <label><input type="radio" name="pago" value="3cuotas"> 3 cuotas ($43.333 c/u)</label>
+                            <label><input type="radio" name="pago" value="contado"> Contado ($130.000)</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1097,8 +1106,11 @@
             <!-- Resumen y botones -->
             <div class="form-resumen">
                 <div class="resumen-info">
-                    <span>Logos seleccionados: <strong id="logos-count" aria-live="polite">9</strong></span>
-                    <span>Total: <strong id="total-precio" aria-live="polite">$117.000</strong></span>
+                    <div class="resumen-linea">
+                        <span>Logos seleccionados: <strong id="logos-count" aria-live="polite">9</strong></span>
+                        <span>Total: <strong id="total-precio" aria-live="polite">$130.000</strong></span>
+                    </div>
+                    <div id="precio-desglose" class="resumen-desglose"></div>
                 </div>
                 <div class="form-buttons">
                     <button type="button" class="btn btn-secondary" onclick="window.print()" aria-label="Imprimir o guardar como PDF">&#128424; Imprimir</button>

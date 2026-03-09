@@ -2,11 +2,31 @@
 // CONFIGURACIÓN
 // ====================
 const CONFIG = {
-    PRECIO_POR_LOGO: 13000,
     LOCALE: 'es-CL',
     STORAGE_KEY: 'propuesta_formulario',
     WHATSAPP_NUMERO: '56987438693', // Sergio Seguel
-    AUTO_SAVE_DELAY: 2000
+    AUTO_SAVE_DELAY: 2000,
+
+    // Precios por complejidad
+    PRECIOS: {
+        simple: 10000,
+        medio: 13000,
+        complejo: 18000,
+        rediseno: 20000
+    },
+
+    // Complejidad de cada logo
+    LOGOS: {
+        logo1: { nombre: 'Cock Sparrer', complejidad: 'simple' },
+        logo2: { nombre: 'Vasco da Gama', complejidad: 'simple' },
+        logo3: { nombre: 'Abeja Lineal', complejidad: 'rediseno' },
+        logo4: { nombre: 'ZTP Óvalo', complejidad: 'complejo' },
+        logo5: { nombre: 'ZINTROP Cerveza', complejidad: 'complejo' },
+        logo6: { nombre: 'ZINTROP Escudo', complejidad: 'complejo' },
+        logo7: { nombre: 'PZPN Águila', complejidad: 'simple' },
+        logo8: { nombre: 'ZINTROP Fútbol v1', complejidad: 'medio' },
+        logo9: { nombre: 'ZINTROP Fútbol v2', complejidad: 'medio' }
+    }
 };
 
 // Elementos del DOM
@@ -222,11 +242,27 @@ function validarFormulario() {
 // ACTUALIZAR TOTAL
 // ====================
 function actualizarTotal() {
-    const seleccionados = document.querySelectorAll('input[name$="_incluir"]:checked').length;
-    const total = seleccionados * CONFIG.PRECIO_POR_LOGO;
+    let total = 0;
+    let seleccionados = 0;
+
+    // Calcular precio según complejidad de cada logo seleccionado
+    for (let i = 1; i <= 9; i++) {
+        const checkbox = document.querySelector(`input[name="logo${i}_incluir"]`);
+        if (checkbox && checkbox.checked) {
+            seleccionados++;
+            const logoKey = `logo${i}`;
+            const logoInfo = CONFIG.LOGOS[logoKey];
+            if (logoInfo) {
+                total += CONFIG.PRECIOS[logoInfo.complejidad];
+            }
+        }
+    }
 
     if (logosCount) logosCount.textContent = seleccionados;
     if (totalPrecio) totalPrecio.textContent = formatearPrecio(total);
+
+    // Actualizar desglose si existe
+    actualizarDesglose();
 
     // Actualizar visual de las tarjetas
     checkboxes.forEach(checkbox => {
@@ -245,6 +281,43 @@ function actualizarTotal() {
 
     // Auto-guardar
     guardarFormulario();
+}
+
+function actualizarDesglose() {
+    const desglose = document.getElementById('precio-desglose');
+    if (!desglose) return;
+
+    let items = [];
+    let conteo = { simple: 0, medio: 0, complejo: 0, rediseno: 0 };
+
+    for (let i = 1; i <= 9; i++) {
+        const checkbox = document.querySelector(`input[name="logo${i}_incluir"]`);
+        if (checkbox && checkbox.checked) {
+            const logoInfo = CONFIG.LOGOS[`logo${i}`];
+            if (logoInfo) {
+                conteo[logoInfo.complejidad]++;
+            }
+        }
+    }
+
+    if (conteo.simple > 0) {
+        items.push(`${conteo.simple} simple${conteo.simple > 1 ? 's' : ''} ($10k)`);
+    }
+    if (conteo.medio > 0) {
+        items.push(`${conteo.medio} medio${conteo.medio > 1 ? 's' : ''} ($13k)`);
+    }
+    if (conteo.complejo > 0) {
+        items.push(`${conteo.complejo} complejo${conteo.complejo > 1 ? 's' : ''} ($18k)`);
+    }
+    if (conteo.rediseno > 0) {
+        items.push(`${conteo.rediseno} rediseño ($20k)`);
+    }
+
+    if (items.length > 0) {
+        desglose.innerHTML = items.map(i => `<span class="desglose-item">${i}</span>`).join('');
+    } else {
+        desglose.innerHTML = '';
+    }
 }
 
 // Formatear precio
