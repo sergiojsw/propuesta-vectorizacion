@@ -437,6 +437,24 @@ body.dark-mode .ejemplo-texto {
 .badge-rediseno { background: #e0e7ff; color: #3730a3; }
 .badge-dependencia { background: #fef3c7; color: #92400e; font-size: 10px; }
 
+/* Nota explicativa de logo base */
+.nota-base-logos {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border: 1px solid #3b82f6;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 0 16px 16px 16px;
+    font-size: 13px;
+    color: #1e40af;
+    line-height: 1.5;
+}
+
+.nota-base-logos strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #1e3a8a;
+}
+
 /* Aviso de dependencia en logo 3 */
 .dependencia-aviso {
     display: flex;
